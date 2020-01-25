@@ -37,7 +37,7 @@ hadk() {
 clone_src() {
 	path="$ANDROID_ROOT/$3/"
 	mkdir -p "$path"
-	git clone --recurse -b $2 https://github.com/SailfishOS-Whyred-sdm660/$1 "$path" &> /dev/null
+	git clone --recurse -b $2 https://github.com/SailfishOS-sdm660/$1 "$path" &> /dev/null
 }
 
 update_src() {
@@ -56,7 +56,7 @@ choose_target() {
 	# Setup variables
 	device="whyred"
 	[ "$target" = "2" ] && device="dumpling"
-	branch="hybris-15.1"
+	branch="hybris-15.1-new"
 	[ "$device" = "dumpling" ] && branch="dumpling-15.1"
 	[ -f "$ANDROID_ROOT/.last_device" ] && last_device="$(<$ANDROID_ROOT/.last_device)"
 
