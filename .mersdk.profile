@@ -57,7 +57,7 @@ choose_target() {
 	device="whyred"
 	[ "$target" = "2" ] && device="dumpling"
 	branch="hybris-15.1-new"
-	[ "$device" = "dumpling" ] && branch="dumpling-15.1"
+	[ "$device" = "dumpling" ] && branch="hybris-15.1-new"
 	[ -f "$ANDROID_ROOT/.last_device" ] && last_device="$(<$ANDROID_ROOT/.last_device)"
 
 	if [ "$device" != "$last_device" ]; then
