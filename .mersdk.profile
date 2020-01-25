@@ -75,9 +75,9 @@ choose_target() {
 		fi
 
 		printf "Cloning droid HAL & configs for $device..."
-		clone_src "droid-hal-whyred" "$branch" "rpm" &&
-		clone_src "droid-config-whyred" "$branch" "hybris/droid-configs" &&
-		clone_src "droid-hal-version-whyred" "$branch" "hybris/droid-hal-version-$device"
+		clone_src "SailfishOS_droid-hal-whyred" "$branch" "rpm" &&
+		clone_src "SailfishOS_droid-config-whyred" "$branch" "hybris/droid-configs" &&
+		clone_src "SailfishOS_droid-hal-version-whyred" "$branch" "hybris/droid-hal-version-$device"
 		(( $? == 0 )) && echo " done!" || echo " fail! exit code: $?"
 
 		echo "$device" > "$ANDROID_ROOT/.last_device"
