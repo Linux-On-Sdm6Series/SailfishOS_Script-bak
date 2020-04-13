@@ -37,7 +37,7 @@ hadk() {
 clone_src() {
 	path="$ANDROID_ROOT/$3/"
 	mkdir -p "$path"
-	git clone --recurse -b $2 https://github.com/SailfishOS-sdm660/$1 "$path" &> /dev/null
+	git clone --recurse -b $2 https://github.com/Linux-On-Whyred/$1 "$path" &> /dev/null
 }
 
 update_src() {
@@ -57,7 +57,7 @@ choose_target() {
 	device="whyred"
 	[ "$target" = "2" ] && device="dumpling"
 	branch="hybris-15.1-new"
-	[ "$device" = "dumpling" ] && branch="hybris-15.1-new"
+	[ "$device" = "dumpling" ] && branch="hybris-16.0"
 	[ -f "$ANDROID_ROOT/.last_device" ] && last_device="$(<$ANDROID_ROOT/.last_device)"
 
 	if [ "$device" != "$last_device" ]; then
@@ -75,9 +75,9 @@ choose_target() {
 		fi
 
 		printf "Cloning droid HAL & configs for $device..."
-		clone_src "SailfishOS_droid-hal-whyred" "$branch" "rpm" &&
-		clone_src "SailfishOS_droid-config-whyred" "$branch" "hybris/droid-configs" &&
-		clone_src "SailfishOS_droid-hal-version-whyred" "$branch" "hybris/droid-hal-version-$device"
+		clone_src "droid-hal-whyred" "$branch" "rpm" &&
+		clone_src "droid-config-whyred" "$branch" "hybris/droid-configs" &&
+		clone_src "droid-hal-version-whyred" "$branch" "hybris/droid-hal-version-$device"
 		(( $? == 0 )) && echo " done!" || echo " fail! exit code: $?"
 
 		echo "$device" > "$ANDROID_ROOT/.last_device"
