@@ -48,7 +48,7 @@ update_src() {
 }
 
 choose_target() {
-	echo -e "\nWhich hybris-15.1 device would you like to build for?"
+	echo -e "\nWhich hybris-16.0 device would you like to build for?"
 	echo -e "\n  1. whyred (Xiaomi Redmi Note 5 Pro)"
 	echo -e "  2. dumpling     (OnePlus 5T)\n"
 	read -p "Choice: (1/2) " target
@@ -56,7 +56,7 @@ choose_target() {
 	# Setup variables
 	device="whyred"
 	[ "$target" = "2" ] && device="dumpling"
-	branch="hybris-15.1-new"
+	branch="hybris-16.0"
 	[ "$device" = "dumpling" ] && branch="hybris-16.0"
 	[ -f "$ANDROID_ROOT/.last_device" ] && last_device="$(<$ANDROID_ROOT/.last_device)"
 
