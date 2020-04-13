@@ -122,13 +122,13 @@ run_mic_build() {
 		}
 
 		# Fetch latest public release version
-		local tmp=`curl -s https://en.wikipedia.org/wiki/Sailfish_OS | grep -B 2 "^<td>Public release$" | grep "^<td>v" | tail -1` # e.g. "<td>v3.0.3.10</td>"
-		tmp=${tmp#*v} # e.g. "3.0.3.10</td>"
-		local LATEST_RELEASE=${tmp::${#tmp}-5} # e.g. "3.0.3.10"
-		local LATEST_TOOLING=`echo $LATEST_RELEASE | cut --complement -d"." -f4-` # e.g. "3.0.3"
-		local CURRENT_TOOLING=`echo $RELEASE | cut --complement -d"." -f4-` # e.g. "3.1.0"
+		local tmp=`curl -s https://en.wikipedia.org/wiki/Sailfish_OS | grep -B 2 "^<td>Public release$" | grep "^<td>v" | tail -1` # e.g. "<td>v3.3.0.14</td>"
+		tmp=${tmp#*v} # e.g. "3.3.0.14</td>"
+		local LATEST_RELEASE=${tmp::${#tmp}-5} # e.g. "3.3.0.14"
+		local LATEST_TOOLING=`echo $LATEST_RELEASE | cut --complement -d"." -f4-` # e.g. "3.3.0"
+		local CURRENT_TOOLING=`echo $RELEASE | cut --complement -d"." -f4-` # e.g. "3.3.0"
 
-		# Can we build latest w/ current tooling (e.g. '3.0.3' vs '3.1.0')
+		# Can we build latest w/ current tooling (e.g. '3.3.0' vs '3.3.0')
 		vercomp "$LATEST_TOOLING" "$CURRENT_TOOLING"
 		local res=$?
 		if (( $res == 0 )); then
